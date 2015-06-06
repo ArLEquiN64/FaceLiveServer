@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', function(req, res){
   var sessionId = createSessionId(req.query.id);
-  res.send(sessionId)
+  res.send(sessionId.toString())
 });
 
 var createSessionId = function(id){
