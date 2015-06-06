@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  if(req.query.sessionId, req.query.id){
+  if(checkSessionId(req.query.sessionId, req.query.id)){
     client.get("fl-tweets", function(err, reply){
       if(err){throw err;}
       else if(reply){
@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
 var checkSessionId = function(sessionId, id){
   client.get(sessionId, function(err, reply){
     if(err){throw err;}
-    else if(reply == sessionId){
+    else if(reply == id){
       return true;
     }
     return false;
