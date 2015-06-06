@@ -1,0 +1,14 @@
+- host: VirtualOSK.cloudapp.net/
+  - register/(POST)
+    - require:
+      - user: text
+      - name: text
+      - mail: text
+      - tell: text (option, no pyphen)
+      - twitter: text (option, after "@")
+    - respond: OK
+
+  - login/(GET)
+    - require:
+      - name: text
+    - respond: redirect to my-page

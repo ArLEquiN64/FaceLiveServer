@@ -20,8 +20,8 @@ app.post '/redister', (req, res) ->
 
 app.get '/login', (req, res) ->
   client = redis.createClient()
-  usr = req.param('username')
-  facePass = req.param('facePass')
+  usr = req.body.username
+  facePass = req.body.facePass
   client.get "fl-#{usr}", (err, reply) ->
     if err
       throw err
