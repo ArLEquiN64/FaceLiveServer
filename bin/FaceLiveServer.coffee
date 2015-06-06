@@ -26,9 +26,9 @@ app.get '/login', (req, res) ->
     if err
       throw err
     else if reply == facePass
-      "you're #{usr}"
+      res.send "you're #{usr}"
     else
-      "not authed"
+      res.send "not authed"
 
 http.listen port, ->
   console.log "listening on *:", port
