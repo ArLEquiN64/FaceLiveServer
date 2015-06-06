@@ -13,7 +13,6 @@ router.post('/', function(req, res, next) {
     if(err){throw err;}
     else{res.send(req.query.name + "is registered.");}
   });
-  res.send("error occured");
 });
 
 module.exports = router;
