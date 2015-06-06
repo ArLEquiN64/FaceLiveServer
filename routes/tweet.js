@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
         time: dt.toFormat("YYYYMMDDHH24MI")
       };
       if(!json.name || !req.body.tweet){res.send("luck params");return;}
-      client.set(req.body.id, JSON.stringify(JSON.parse(reply).tl.push(json)), function(err, keys_replies){
+      client.set("fl-tweets", JSON.stringify(JSON.parse(reply).tl.unshift(json)), function(err, keys_replies){
         if(err){throw err;}
         else{res.send(req.body.name + " tweet.");return;}
         return;
