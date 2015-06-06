@@ -4,7 +4,7 @@ app = express()
 app.use bodyParser.urlencoded { extended: false }
 
 http = require('http').Server(app)
-port = 8090
+port = 80
 
 redis = require 'redis'
 
