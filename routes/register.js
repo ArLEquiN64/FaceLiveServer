@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
         else{res.send(req.body.name + " is registered.");return;}
       });
     }
-    else{res.send("already registered.");}
+    else{res.send("already registered.");return;}
     res.send("error occured.");
   });
 });
