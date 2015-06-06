@@ -28,6 +28,7 @@ router.post('/', function(req, res, next) {
       else{res.send("error occured.");return;}
     });
   }
+  res.send("invalid sessionId");
 });
 
 router.get('/', function(req, res, next) {
@@ -40,6 +41,7 @@ router.get('/', function(req, res, next) {
       }
     });
   }
+  res.send("invalid sessionId");
 });
 
 var checkSessionId = function(sessionId, id){

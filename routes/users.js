@@ -25,6 +25,7 @@ router.get('/:id(\\d+)', function(req, res) {
     });
     res.send("error occured");
   }
+  res.send("invalid sessionId");
 });
 
 var checkSessionId = function(sessionId, id){
