@@ -1,7 +1,7 @@
 - host: VirtualOSK.cloudapp.net/
   - register/(POST)
     - require:
-      - user: text
+      - id: text
       - name: text
       - mail: text
       - tell: text (option, no pyphen)
