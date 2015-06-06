@@ -10,11 +10,11 @@ router.post('/', function(req, res, next) {
   client.get("fl-tweets", function(err, reply){
     if(err){throw err;}
     else if(reply){
-      var td = new Date();
+      var dt = new Date();
       var json = {
         name: req.body.name,
         tweet: req.body.tweet,
-        time: td.toFormat("YYYYMMDDHH24MI");
+        time: dt.toFormat("YYYYMMDDHH24MI")
       };
       if(!json.name || !req.body.tweet){res.send("luck params");return;}
       client.set(req.body.id, JSON.stringify(JSON.parse(reply)+=json), function(err, keys_replies){
