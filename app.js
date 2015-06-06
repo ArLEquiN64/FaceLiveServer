@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/register');
-var tweet = require('/routes/tweet');
+var tweet = require('./routes/tweet');
 
 var app = express();
 
