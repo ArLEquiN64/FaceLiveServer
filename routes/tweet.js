@@ -11,13 +11,14 @@ router.post('/', function(req, res, next) {
     if(err){throw err;}
     else if(reply){
       var dt = new Date();
-      var json = {
+      var json = JSON.parse(reply);
+      json.tl.unshift({
         name: req.body.name,
         tweet: req.body.tweet,
         time: dt.toFormat("YYYYMMDDHH24MI")
-      };
+      });
       if(!json.name || !req.body.tweet){res.send("luck params");return;}
-      client.set("fl-tweets", JSON.stringify(JSON.parse(reply).tl.unshift(json)), function(err, keys_replies){
+      client.set("fl-tweets", JSON.stringify(json), function(err, keys_replies){
         if(err){throw err;}
         else{res.send(req.body.name + " tweet.");return;}
         return;
