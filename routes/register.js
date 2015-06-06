@@ -23,7 +23,6 @@ router.post('/', function(req, res, next) {
       });
     }
     else{res.send("already registered.");return;}
-    //res.send("error occured.");
   });
 });
 
