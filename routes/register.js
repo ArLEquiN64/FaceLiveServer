@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
   if(req.query.twitter){json.twitter = req.query.twitter;}
   client.set(req.query.id, JSON.stringify(json), function(err, keys_replies){
     if(err){throw err;}
-    else{res.OK(req.query.name + "is registered.");}
+    else{res.send(req.query.name + "is registered.");}
   });
   res.send("error occured");
 });
