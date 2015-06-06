@@ -12,11 +12,23 @@ app.post '/redister', (req, res) ->
   client = redis.createClient()
   usr = req.body.username
   facePass = req.body.facePass
-  client.set usr, facePass, (err, Keys_repliys) ->
+  client.set "fl-#{usr}", facePass, (err, Keys_repliys) ->
     if err
       throw err
     else
       res.send "complete #{usr}"
+
+app.get '/login', (req, res) ->
+  client = redis.createClient()
+  usr = req.param('username')
+  facePass = req.param('facePass')
+  client.get "fl-#{usr}", (err, reply) ->
+    if err
+      throw err
+    else if reply == facePass
+      "you're #{usr}"
+    else
+      "not authed"
 
 http.listen port, ->
   console.log "listening on *:", port
