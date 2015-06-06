@@ -25,11 +25,4 @@ router.get('/:id(\\d+)', function(req, res) {
   res.send("error occured");
 });
 
-var createSessionId = function(id) {
-  var dt = new Date();
-  var formatted = dt.toFormat("YYYYMMDDHH24MI");
-  var sessionId = Math.floor(Math.random() * 100000000);
-  //client.set(sessionId, );
-}
-
 module.exports = router;
