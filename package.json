@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "coffee bin/FaceLiveServer.coffee | node"
+    "run": "coffee bin/FaceLiveServer.coffee"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "homepage": "https://github.com/ArLEquiN64/FaceLiveServer",
   "devDependencies": {
     "coffee-script": "^1.9.3"
+  },
+  "dependencies": {
+    "express": "^4.12.4",
+    "redis": "^0.12.1"
   }
 }
