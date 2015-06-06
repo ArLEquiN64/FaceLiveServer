@@ -11,18 +11,30 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id(\\d+)', function(req, res) {
-  client.get(req.params.id, function(err, reply){
-    if(err){throw err;}
-    else if(reply){
-      if(req.query.id==req.params.id){
-        createSessionId(req.query.id);
+  if(checkSessionId(req.query.sessionId, req.query.id)){
+    client.get(req.params.id, function(err, reply){
+      if(err){throw err;}
+      else if(reply){
+        if(req.query.id == req.params.id){
+          createSessionId(req.query.id);
+        }
+        res.send(JSON.stringify(reply));
+        return;
       }
-      res.send(JSON.stringify(reply));
-      return;
-    }
-    else{res.send("invalid id.");return;}
-  });
-  res.send("error occured");
+      else{res.send("invalid id.");return;}
+    });
+    res.send("error occured");
+  }
 });
+
+var checkSessionId = function(sessionId, id){
+  client.get(sessionId, function(err, reply){
+    if(err){throw err;}
+    else if(reply == sessionId){
+      return true;
+    }
+    return false;
+  });
+}
 
 module.exports = router;
