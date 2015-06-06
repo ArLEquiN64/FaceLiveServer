@@ -6,12 +6,12 @@ client = redis.createClient();
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-  var json = {name: req.query.name, mail: req.query.mail};
-  if(req.query.tell){json.mail = req.query.tell;}
-  if(req.query.twitter){json.twitter = req.query.twitter;}
-  client.set(req.query.id, JSON.stringify(json), function(err, keys_replies){
+  var json = {name: req.body.name, mail: req.body.mail};
+  if(req.body.tell){json.mail = req.body.tell;}
+  if(req.body.twitter){json.twitter = req.body.twitter;}
+  client.set(req.body.id, JSON.stringify(json), function(err, keys_replies){
     if(err){throw err;}
-    else{res.send(req.query.name + "is registered.");}
+    else{res.send(req.body.name + "is registered.");}
   });
 });
 
