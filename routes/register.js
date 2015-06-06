@@ -12,7 +12,7 @@ router.post('/', function(req, res, next) {
     tell: req.body.tell,
     twitter: req.body.twitter
   };
-  if(!json.mail || !json.name || !req.body.id){res.send("luck params");}
+  if(!json.mail || !json.name || !req.body.id){res.send("luck params");return;}
   client.set(req.body.id, JSON.stringify(json), function(err, keys_replies){
     if(err){throw err;}
     else{res.send(req.body.name + "is registered.");}
