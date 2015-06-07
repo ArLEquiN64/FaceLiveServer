@@ -7,6 +7,21 @@ var Bcrypt = require("bcrypt");
 
 //var MKEY = process.env.FACE_LIVE_MASTER;
 
+var checkHash = function() {
+  function checkHash(key){
+    this.pass = key;
+  }
+  checkHash.prototype.compare = function(pass){
+    var result = Bcrypt.compareSync(MKEY+pass);
+    return result;
+  }
+  checkHash.prototype.getToken = function(pass){
+    var salt = Bcrypt.genSaltSync(10);
+    var gToken = Bcrypt.hashSync(MKEY+pass, salt);
+    return gToken;
+  }
+})();
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -36,17 +51,5 @@ var createSessionId = function(id){
     else{return undefined;}
   });
 }
-
-(function checkHash(key) {
-  checkHash.prototype.compare = function(pass){
-    var result = Bcrypt.compareSync(MKEY+pass);
-    return result;
-  }
-  checkHash.prototype.getToken = function(pass){
-    var salt = Bcrypt.genSaltSync(10);
-    var gToken = Bcrypt.hashSync(MKEY+pass, salt);
-    return gToken;
-  }
-})();
 
 module.exports = router;
