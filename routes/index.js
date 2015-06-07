@@ -3,6 +3,9 @@ var router = express.Router();
 var redis = require('redis');
 client = redis.createClient();
 var sleep = require('sleep-async')();
+var Bcrypt = require("bcrypt");
+
+//var MKEY = process.env.FACE_LIVE_MASTER;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -33,5 +36,17 @@ var createSessionId = function(id){
     else{return undefined;}
   });
 }
+
+(function checkHash(key) {
+  checkHash.prototype.compare = function(pass){
+    var result = Bcrypt.compareSync(MKEY+pass);
+    return result;
+  }
+  checkHash.prototype.getToken = function(pass){
+    var salt = Bcrypt.genSaltSync(10);
+    var gToken = Bcrypt.hashSync(MKEY+pass, salt);
+    return gToken;
+  }
+})();
 
 module.exports = router;

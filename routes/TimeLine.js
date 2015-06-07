@@ -5,7 +5,7 @@ require('date-utils');
 
 client = redis.createClient();
 
-client.subscribe('Channel');
+client.subscribe("Channel");
 client.on("message", function(channel, message) {
     sys.puts(channel + " :" + message);
 });
