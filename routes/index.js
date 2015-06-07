@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res){
-  var sessionId = createSessionId(req.query.id);
+  var sessionId = createSessionId(req.query.faceId);
   if(sessionId){res.send(sessionId.toString());return;}
   else{res.send("you are not registered.")}
 });

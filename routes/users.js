@@ -11,12 +11,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id(\\d+)', function(req, res) {
-  if(checkSessionId(req.query.sessionId, req.query.id)){
+  if(checkSessionId(req.query.sessionId, req.query.faceId)){
     client.get(req.params.id, function(err, reply){
       if(err){throw err;}
       else if(reply){
-        if(req.query.id == req.params.id){
-          createSessionId(req.query.id);
+        if(req.query.faceId == req.params.id){
+          createSessionId(req.query.faceId);
         }
         res.send(JSON.stringify(reply));
         return;
