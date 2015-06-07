@@ -24,7 +24,7 @@ var checkHash = (function() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'FileLife' });
+  res.render('index', { title: 'Facelife' });
 });
 
 router.get('/login', function(req, res){
