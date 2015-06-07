@@ -7,7 +7,7 @@ client = redis.createClient();
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-  if(checkSessionId(req.body.sessionId, req.body.id)){
+  if(checkSessionId(req.body.sessionId, req.body.faceId)){
     client.get("fl-tweets", function(err, reply){
       if(err){throw err;}
       else if(reply){
@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  if(checkSessionId(req.query.sessionId, req.query.id)){
+  if(checkSessionId(req.query.sessionId, req.query.faceId)){
     client.get("fl-tweets", function(err, reply){
       if(err){throw err;}
       else if(reply){
