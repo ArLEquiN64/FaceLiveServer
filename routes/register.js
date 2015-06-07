@@ -14,7 +14,8 @@ router.post('/', function(req, res, next) {
         mail: req.body.mail,
         tell: req.body.tell,
         twitter: req.body.twitter,
-        image: req.body.image
+        image: req.body.image,
+        comment: req.body.comment
       };
       if(!json.mail || !json.name || !req.body.id || !req.body.image){res.send("luck params");return;}
       client.set(req.body.id, JSON.stringify(json), function(err, keys_replies){
