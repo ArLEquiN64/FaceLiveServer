@@ -13,9 +13,10 @@ router.post('/', function(req, res, next) {
         name: req.body.name,
         mail: req.body.mail,
         tell: req.body.tell,
-        twitter: req.body.twitter
+        twitter: req.body.twitter,
+        image: req.body.image
       };
-      if(!json.mail || !json.name || !req.body.id){res.send("luck params");return;}
+      if(!json.mail || !json.name || !req.body.id || !req.body.image){res.send("luck params");return;}
       client.set(req.body.id, JSON.stringify(json), function(err, keys_replies){
         if(err){throw err;}
         else{res.send(req.body.name + " is registered.");return;}
