@@ -7,7 +7,7 @@ var Bcrypt = require("bcrypt");
 
 //var MKEY = process.env.FACE_LIVE_MASTER;
 
-var checkHash = function() {
+var checkHash = (function() {
   function checkHash(key){
     this.pass = key;
   }
